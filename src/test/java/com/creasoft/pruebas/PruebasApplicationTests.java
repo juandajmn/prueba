@@ -22,11 +22,24 @@ class PruebasApplicationTests {
 	    WebDriver driver = new ChromeDriver();
 	    driver.get("https://www.choucairtesting.com/empleos-testing/");
 	    Thread.sleep(5000);  // Let the user actually see something!
-	    WebElement searchBox = driver.findElement(By.name("q"));
-	    searchBox.sendKeys("ChromeDriver");
-	    searchBox.submit();
-	    Thread.sleep(5000);  // Let the user actually see something!
-	    driver.quit();
+		//Keyword
+	    WebElement searchBox = driver.findElement(By.id("search_keywords"));
+	    //si existe un registro en la caja de texto lo limpia
+		searchBox.clear();
+		//busqueda de palabra
+		searchBox.sendKeys("automatizador medellín y bogotá");
+
+		//Location
+		WebElement locationsearchBox = driver.findElement(By.id("search_location"));
+		//si existe un registro en la caja de texto lo limpia
+		locationsearchBox.clear();
+		//busqueda de localidad
+		locationsearchBox.sendKeys("medellín");
+
+		//btn-search
+		WebElement btnsearchBox = driver.findElement(By.id("Search Jobs"));
+		btnsearchBox.click();
+	    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	  }
 
 }
